@@ -8,7 +8,8 @@ import ResetController from './controllers/ResetController';
 import { Controller } from './types/Controller';
 
 interface Routes {
-  [key: string]: Controller<any>['handle']
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: Controller<any>['handle'];
 }
 
 export const routes: Routes = {

@@ -7,5 +7,5 @@ export type Controller<T> = {
     socket: WebSocket,
     message: T,
     sessionId?: string
-  ) => void
-}
+  ) => void;
+};

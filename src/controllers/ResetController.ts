@@ -7,10 +7,10 @@ export default {
       if (client !== socket && client.readyState === socket.OPEN) {
         const response: ResetMessage = {
           type: 'reset',
-          sessionId: sessionId as string
-        }
+          sessionId: sessionId as string,
+        };
         client.send(JSON.stringify(response));
       }
     });
-  }
-} as Controller<ResetMessage>
+  },
+} as Controller<ResetMessage>;

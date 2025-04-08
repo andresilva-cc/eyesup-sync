@@ -10,23 +10,23 @@ export default {
 
       const response: SessionJoinedMessage = {
         type: 'session-joined',
-        sessionId
-      }
+        sessionId,
+      };
       socket.send(JSON.stringify(response));
 
       const request: SyncRequestMessage = {
         type: 'sync-request',
-        sessionId
-      }
-      sessions.get(sessionId)?.host.send(JSON.stringify(request))
-
-    } else {
+        sessionId,
+      };
+      sessions.get(sessionId)?.host.send(JSON.stringify(request));
+    }
+    else {
       const response: ErrorMessage = {
         type: 'error',
         code: 'session_not_found',
-        message: 'Session not found'
-      }
+        message: 'Session not found',
+      };
       socket.send(JSON.stringify(response));
     }
-  }
-} as Controller<JoinSessionMessage>
+  },
+} as Controller<JoinSessionMessage>;

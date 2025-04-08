@@ -7,10 +7,10 @@ export default {
       if (client !== socket && client.readyState === socket.OPEN) {
         const response: ResumeMessage = {
           type: 'resume',
-          sessionId: sessionId as string
-        }
+          sessionId: sessionId as string,
+        };
         client.send(JSON.stringify(response));
       }
     });
-  }
-} as Controller<ResumeMessage>
+  },
+} as Controller<ResumeMessage>;

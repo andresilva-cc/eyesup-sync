@@ -7,10 +7,10 @@ export default {
       if (client !== socket && client.readyState === socket.OPEN) {
         const response: StartMessage = {
           type: 'start',
-          sessionId: sessionId as string
-        }
+          sessionId: sessionId as string,
+        };
         client.send(JSON.stringify(response));
       }
     });
-  }
-} as Controller<StartMessage>
+  },
+} as Controller<StartMessage>;

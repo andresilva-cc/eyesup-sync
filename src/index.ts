@@ -1,12 +1,12 @@
 import { type WebSocket, WebSocketServer } from 'ws';
-import { routes } from './routes'
+import { routes } from './routes';
 import { Message } from './types/Message';
 
 const server = new WebSocketServer({ port: 3001 });
 
 const sessions = new Map<string, {
-  host: WebSocket,
-  clients: Set<WebSocket>
+  host: WebSocket;
+  clients: Set<WebSocket>;
 }
 >();
 
@@ -14,14 +14,14 @@ server.on('connection', (socket) => {
   let currentSession: string | undefined;
 
   socket.on('message', (rawMessage: string) => {
-    const message = JSON.parse(rawMessage) as Message
+    const message = JSON.parse(rawMessage) as Message;
 
     if (!currentSession && 'sessionId' in message) {
-      currentSession = message.sessionId
+      currentSession = message.sessionId;
     }
-    
-    const handler = routes[message.type]
-    handler(sessions, socket, message, currentSession)
+
+    const handler = routes[message.type];
+    handler(sessions, socket, message, currentSession);
   });
 
   socket.on('close', () => {

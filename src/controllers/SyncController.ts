@@ -8,10 +8,10 @@ export default {
         const response: SyncMessage = {
           type: 'sync',
           sessionId: sessionId as string,
-          payload: message.payload
-        }
+          payload: message.payload,
+        };
         client.send(JSON.stringify(response));
       }
     });
-  }
-} as Controller<SyncMessage>
+  },
+} as Controller<SyncMessage>;
