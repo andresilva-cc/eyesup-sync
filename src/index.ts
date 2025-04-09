@@ -1,8 +1,9 @@
+import 'dotenv/config';
 import { type WebSocket, WebSocketServer } from 'ws';
 import { routes } from './routes';
 import { Message } from './types/Message';
 
-const server = new WebSocketServer({ port: 3001 });
+const server = new WebSocketServer({ port: Number(process.env.PORT) });
 
 const sessions = new Map<string, {
   host: WebSocket;
